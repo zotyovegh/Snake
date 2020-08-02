@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Snake from './Snake';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Snake />
   </React.StrictMode>,
   document.getElementById('root')
 );
