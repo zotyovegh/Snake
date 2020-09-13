@@ -44,6 +44,17 @@ class Game extends Component {
     }
   }
 
+  checkBodyElementHit() {
+    let bodyElements = [...this.state.snakeBody];
+    let head = bodyElements[bodyElements.length - 1];
+    bodyElements.pop();
+    bodyElements.forEach((bodyElement) => {
+      if (head[0] == bodyElement[0] && head[1] == bodyElement[1]) {
+        this.setState({ speed: 0, snakeBody: this.previousBody });
+      }
+    });
+  }
+
   movement = () => {
     let bodyElements = [...this.state.snakeBody];
     let head = bodyElements[bodyElements.length - 1];
@@ -72,6 +83,7 @@ class Game extends Component {
       });
     }
     this.checkBorderHit();
+    this.checkBodyElementHit();
   };
 
   onKeyPressed = (e) => {
