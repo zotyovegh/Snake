@@ -6,3 +6,10 @@
   margin-left: 40px;
   margin-top: 40px;
 }
+
+.snake_body_element {
+  position: absolute;
+  background-color: black;
+  width: 16px;
+  height: 16px;  
+} 
