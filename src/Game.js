@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./index.css";
-import Body from "./Body";
-import Food from "./Food";
+import Body from "./Objects/Body";
+import Food from "./Objects/Food";
 
 //Each snake body element should have an x and y coordinate
 
