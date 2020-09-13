@@ -7,11 +7,8 @@ import Food from "./Objects/Food";
 
 class Game extends Component {
   state = {
-    speed: 150,
-    food: [
-      Math.floor((Math.random() * (98 - 1 + 1) + 1) / 2) * 2,
-      Math.floor((Math.random() * (98 - 1 + 1) + 1) / 2) * 2,
-    ],
+    speed: 100,
+    food: this.getFoodCoordinates(),
     snakeBody: [
       [0, 0],
       [2, 0],
@@ -30,6 +27,13 @@ class Game extends Component {
         <Food position={this.state.food} />
       </div>
     );
+  }
+
+  getFoodCoordinates() {
+    return [
+      Math.floor((Math.random() * (98 - 1 + 1) + 1) / 2) * 2,
+      Math.floor((Math.random() * (98 - 1 + 1) + 1) / 2) * 2,
+    ];
   }
 
   componentDidMount() {
@@ -53,6 +57,16 @@ class Game extends Component {
         this.setState({ speed: 0, snakeBody: this.previousBody });
       }
     });
+  }
+
+  checkIfFoodHit() {
+    let head = this.state.snakeBody[this.state.snakeBody.length - 1];
+    let food = this.state.food;
+    if (food[0] == head[0] && food[1] == head[1]) {
+      let newBody = [...this.state.snakeBody];
+      newBody.unshift([]);
+      this.setState({ snakeBody: newBody, food: this.getFoodCoordinates() });
+    }
   }
 
   movement = () => {
@@ -84,6 +98,7 @@ class Game extends Component {
     }
     this.checkBorderHit();
     this.checkBodyElementHit();
+    this.checkIfFoodHit();
   };
 
   onKeyPressed = (e) => {
