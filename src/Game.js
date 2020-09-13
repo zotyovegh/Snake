@@ -7,12 +7,12 @@ import Food from "./Objects/Food";
 
 class Game extends Component {
   state = {
-    speed: 100,
+    speed: 150,
     food: this.getFoodCoordinates(),
     snakeBody: [
       [0, 0],
-      [2, 0],
       [4, 0],
+      [8, 0],
     ],
 
     direction: "RIGHT",
@@ -31,8 +31,8 @@ class Game extends Component {
 
   getFoodCoordinates() {
     return [
-      Math.floor((Math.random() * (98 - 1 + 1) + 1) / 2) * 2,
-      Math.floor((Math.random() * (98 - 1 + 1) + 1) / 2) * 2,
+      Math.floor((Math.random() * (98 - 1 + 1) + 1) / 4) * 4,
+      Math.floor((Math.random() * (98 - 1 + 1) + 1) / 4) * 4,
     ];
   }
 
@@ -75,16 +75,16 @@ class Game extends Component {
 
     switch (this.state.direction) {
       case "RIGHT":
-        head = [head[0] + 2, head[1]];
+        head = [head[0] + 4, head[1]];
         break;
       case "LEFT":
-        head = [head[0] - 2, head[1]];
+        head = [head[0] - 4, head[1]];
         break;
       case "DOWN":
-        head = [head[0], head[1] + 2];
+        head = [head[0], head[1] + 4];
         break;
       case "UP":
-        head = [head[0], head[1] - 2];
+        head = [head[0], head[1] - 4];
         break;
     }
 
