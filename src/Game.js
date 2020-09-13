@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import "./index.css";
 import Body from "./Body";
+import Food from "./Food";
 
 //Each snake body element should have an x and y coordinate
 
 class Game extends Component {
   state = {
+    food: [
+      Math.floor((Math.random() * (98 - 1 + 1) + 1) / 2) * 2,
+      Math.floor((Math.random() * (98 - 1 + 1) + 1) / 2) * 2,
+    ],
     snakeBody: [
       [0, 0],
       [2, 0],
@@ -17,6 +22,7 @@ class Game extends Component {
     return (
       <div className="board">
         <Body snake_body_element={this.state.snakeBody} />
+        <Food position={this.state.food} />
       </div>
     );
   }
