@@ -7,6 +7,7 @@ import Food from "./Objects/Food";
 
 class Game extends Component {
   state = {
+    speed: 150,
     food: [
       Math.floor((Math.random() * (98 - 1 + 1) + 1) / 2) * 2,
       Math.floor((Math.random() * (98 - 1 + 1) + 1) / 2) * 2,
@@ -29,8 +30,19 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    setInterval(this.movement, 150);
+    setInterval(this.movement, this.state.speed);
+
     document.onkeydown = this.onKeyPressed;
+  }
+
+  componentDidUpdate() {
+    this.checkBorderHit();
+  }
+
+  checkBorderHit() {
+    let head = this.state.snakeBody[this.state.snakeBody.length - 1];
+    if (head[0] >= 100 || head[1] >= 100 || head[0] < 0 || head[1] < 0) {
+    }
   }
 
   movement = () => {
