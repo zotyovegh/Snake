@@ -8,11 +8,11 @@ import Food from "./Objects/Food";
 class Game extends Component {
   state = {
     speed: 150,
-    food: this.getFoodCoordinates(),
+    food: this.getStandardFoodCoordinates(),
     snakeBody: [
-      [0, 0],
-      [4, 0],
-      [8, 0],
+      [0, 4],
+      [4, 4],
+      [8, 4],
     ],
 
     direction: "RIGHT",
@@ -29,11 +29,32 @@ class Game extends Component {
     );
   }
 
-  getFoodCoordinates() {
+  getStandardFoodCoordinates() {
     return [
       Math.floor((Math.random() * (98 - 1 + 1) + 1) / 4) * 4,
       Math.floor((Math.random() * (98 - 1 + 1) + 1) / 4) * 4,
     ];
+  }
+
+  getNewFoodCoordinates() {
+    let coordinates = this.getStandardFoodCoordinates();
+    let bodyElements = [...this.state.snakeBody];
+    let status = "good";
+
+    do {
+      status = "good";
+      for (var i = 0; i < bodyElements.length; i++) {
+        let element = bodyElements[i];
+        if (coordinates[0] == element[0] && coordinates[1] == element[1]) {
+          status = "bad";
+        }
+      }
+      if (status === "bad") {
+        coordinates = this.getStandardFoodCoordinates();
+      }
+    } while (status !== "good");
+
+    return coordinates;
   }
 
   componentDidMount() {
@@ -65,7 +86,7 @@ class Game extends Component {
     if (food[0] == head[0] && food[1] == head[1]) {
       let newBody = [...this.state.snakeBody];
       newBody.unshift([]);
-      this.setState({ snakeBody: newBody, food: this.getFoodCoordinates() });
+      this.setState({ snakeBody: newBody, food: this.getNewFoodCoordinates() });
     }
   }
 
