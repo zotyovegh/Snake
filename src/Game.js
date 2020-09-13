@@ -8,8 +8,8 @@ class Game extends Component {
   state = {
     snakeBody: [
       [0, 0],
-      [0, 2],
-      [0, 4],
+      [2, 0],
+      [4, 0],
     ],
   };
 
