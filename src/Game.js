@@ -17,8 +17,11 @@ class Game extends Component {
       [2, 0],
       [4, 0],
     ],
+
     direction: "RIGHT",
   };
+
+  previousBody = this.snakeBody;
 
   render() {
     return (
@@ -31,17 +34,13 @@ class Game extends Component {
 
   componentDidMount() {
     setInterval(this.movement, this.state.speed);
-
     document.onkeydown = this.onKeyPressed;
-  }
-
-  componentDidUpdate() {
-    this.checkBorderHit();
   }
 
   checkBorderHit() {
     let head = this.state.snakeBody[this.state.snakeBody.length - 1];
     if (head[0] >= 100 || head[1] >= 100 || head[0] < 0 || head[1] < 0) {
+      this.setState({ speed: 0, snakeBody: this.previousBody });
     }
   }
 
@@ -66,9 +65,13 @@ class Game extends Component {
 
     bodyElements.push(head);
     bodyElements.shift();
-    this.setState({
-      snakeBody: bodyElements,
-    });
+    if (this.state.speed !== 0) {
+      this.previousBody = this.state.snakeBody;
+      this.setState({
+        snakeBody: bodyElements,
+      });
+    }
+    this.checkBorderHit();
   };
 
   onKeyPressed = (e) => {
