@@ -1,12 +1,10 @@
-import React from 'react';
-import './index.css';
+import React, { Component } from "react";
+import "./index.css";
 
-function Snake() {
-  return (
-    <div className="Snake">
-      Test text
-    </div>
-  );
+class Snake extends Component {
+  render() {
+    return <div className="board">Test text</div>;
+  }
 }
 
 export default Snake;
