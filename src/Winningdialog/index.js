@@ -22,10 +22,12 @@ class WinningDialog extends Component {
     let winningDialog = (
       <div className="winningStyles">
         <div className="Message">
-          Congratulations, your score is {this.props.score} !!!
+          Congratulations, your score is {this.props.score}!!!
         </div>
 
-        {(this.props.limit === -1 || this.props.limit > this.props.score) && (
+        {
+        /*(this.props.limit === -1 || this.props.limit > this.props.score) && */
+        (
           <div>
             <input type="text" id="name" onChange={this.onNameChange}></input>
             <button className="buttons" id="save" onClick={this.Score}>
