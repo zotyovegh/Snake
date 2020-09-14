@@ -1,0 +1,50 @@
+.winningStyles {
+  width: fit-content;
+  height: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: rgba(144, 238, 144, 0.935);
+  padding: 10px, 20px, 40px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.closeButton {
+  cursor: pointer;
+  float: right;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 20px;
+  align-self: flex-end;
+  margin-right: 5px;
+}
+
+.custom {
+  width: 60px;
+  font-size: 22px;
+}
+
+.buttons {
+  width: fit-content;
+  margin-top: 5px;
+}
+
+.winningStyles {
+  font-size: 20px;
+  max-width: 230px;
+}
+
+#name {
+  width: 120px;
+}

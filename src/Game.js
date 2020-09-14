@@ -2,29 +2,48 @@ import React, { Component } from "react";
 import "./index.css";
 import Body from "./Objects/Body";
 import Food from "./Objects/Food";
+import WinningDialog from "./Winningdialog";
 
 //Each snake body element should have an x and y coordinate
-
+const startingGrid = [
+  [0, 0],
+  [4, 0],
+  [8, 0],
+];
 class Game extends Component {
   state = {
     speed: 150,
     food: this.getStandardFoodCoordinates(),
-    snakeBody: [
-      [0, 4],
-      [4, 4],
-      [8, 4],
-    ],
-
+    snakeBody: startingGrid,
+    isWinningDialog: false,
     direction: "RIGHT",
   };
 
   previousBody = this.snakeBody;
+
+  reset = () => {
+    this.setState({
+      speed: 150,
+      food: this.getStandardFoodCoordinates(),
+      snakeBody: startingGrid,
+      isWinningDialog: false,
+      direction: "RIGHT",
+    });
+  }
 
   render() {
     return (
       <div className="board">
         <Body snake_body_element={this.state.snakeBody} />
         <Food position={this.state.food} />
+        <WinningDialog
+          category={this.state.category}
+          isOpen={this.state.isWinningDialog}
+          onClose={(e) => this.setState({ isWinningDialog: false })}
+          onNewGame={this.reset}
+          score={this.state.snakeBody.length}
+          limit={this.state.limit}
+        ></WinningDialog>
       </div>
     );
   }
@@ -65,7 +84,7 @@ class Game extends Component {
   checkBorderHit() {
     let head = this.state.snakeBody[this.state.snakeBody.length - 1];
     if (head[0] >= 100 || head[1] >= 100 || head[0] < 0 || head[1] < 0) {
-      this.setState({ speed: 0, snakeBody: this.previousBody });
+      this.gameOver();
     }
   }
 
@@ -75,8 +94,16 @@ class Game extends Component {
     bodyElements.pop();
     bodyElements.forEach((bodyElement) => {
       if (head[0] == bodyElement[0] && head[1] == bodyElement[1]) {
-        this.setState({ speed: 0, snakeBody: this.previousBody });
+        this.gameOver();
       }
+    });
+  }
+
+  gameOver() {
+    this.setState({ speed: 0, snakeBody: this.previousBody });
+    console.log("Done " + this.state.snakeBody.length);
+    this.setState({
+      isWinningDialog: true,
     });
   }
 
