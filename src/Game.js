@@ -32,7 +32,7 @@ class Game extends Component {
       isWinningDialog: false,
       direction: "RIGHT",
     });
-  }
+  };
 
   render() {
     return (

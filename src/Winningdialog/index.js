@@ -57,6 +57,7 @@ class WinningDialog extends Component {
       highscore: this.props.score,
     });
     this.props.onClose();
+    this.props.onNewGame();
   };
 }
 export default WinningDialog;
