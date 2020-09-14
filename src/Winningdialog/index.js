@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./index.css";
-//import firebase from "../../firebase";
+import firebase from "../firebase";
 
 class WinningDialog extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class WinningDialog extends Component {
         (
           <div>
             <input type="text" id="name" onChange={this.onNameChange}></input>
-            <button className="buttons" id="save" onClick={this.Score}>
+            <button className="buttons" id="save" onClick={this.onSaveScore}>
               Save my score
             </button>
           </div>
@@ -55,10 +55,10 @@ class WinningDialog extends Component {
   }
 
   onSaveScore = (e) => {
-    /* firebase.firestore().collection(this.props.category).add({
+     firebase.firestore().collection("names").add({
       name: this.state.name,
       highscore: this.props.score,
-    });*/
+    });
     this.props.onClose();
   };
 }
