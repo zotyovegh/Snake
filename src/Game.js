@@ -4,6 +4,8 @@ import Body from "./Objects/Body";
 import Food from "./Objects/Food";
 import WinningDialog from "./Winningdialog";
 
+import Highscore from "./Highscore";
+
 //Each snake body element should have an x and y coordinate
 const startingGrid = [
   [0, 0],
@@ -44,6 +46,9 @@ class Game extends Component {
           score={this.state.snakeBody.length}
           limit={this.state.limit}
         ></WinningDialog>
+        <div className="highscore">
+          <Highscore lastValue={this.getLastValue} />
+        </div>
       </div>
     );
   }

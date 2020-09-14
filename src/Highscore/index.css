@@ -1,0 +1,35 @@
+.main {
+  display: flex;
+  margin-top: 10px;
+  margin-left: -15px;  
+}
+
+.category {
+  font-size: 14px;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.score {
+  width: 20px;
+  float: left;
+}
+
+.name {
+  width: 100px;
+  float: left;
+}
+
+.item {
+  margin-top: -12px;
+}
+
+.title {
+  margin-left: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+
+
+
