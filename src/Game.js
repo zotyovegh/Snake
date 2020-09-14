@@ -19,8 +19,9 @@ class Game extends Component {
     snakeBody: startingGrid,
     isWinningDialog: false,
     direction: "RIGHT",
+    limit: 0,
   };
-
+  limit = 0;
   previousBody = this.snakeBody;
 
   reset = () => {
@@ -44,7 +45,7 @@ class Game extends Component {
           onClose={(e) => this.setState({ isWinningDialog: false })}
           onNewGame={this.reset}
           score={this.state.snakeBody.length}
-          limit={this.state.limit}
+          limit={this.limit}
         ></WinningDialog>
         <div className="highscore">
           <Highscore lastValue={this.getLastValue} />
@@ -52,6 +53,10 @@ class Game extends Component {
       </div>
     );
   }
+
+  getLastValue = (score) => {
+    this.limit = score;
+  };
 
   getStandardFoodCoordinates() {
     return [

@@ -33,22 +33,21 @@ const Highscore = (props) => {
   } else {
     namesLast = names[9] && names[9].highscore;
   }
- // props.lastValue(namesLast);
+  props.lastValue(namesLast);
 
   return (
     <div className="main">
-        <div className="title">Names</div>
-        <ol>
-          {names.map((data) => (
-            <li className="item" key={data.id}>
-              <div>
-                <div className="name">{data.name}</div>
-                <div className="score">{data.highscore}</div>
-              </div>
-            </li>
-          ))}
-        </ol>  
-     
+      <div className="title">Names</div>
+      <ol>
+        {names.map((data) => (
+          <li className="item" key={data.id}>
+            <div>
+              <div className="name">{data.name}</div>
+              <div className="score">{data.highscore}</div>
+            </div>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 };

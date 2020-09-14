@@ -24,10 +24,7 @@ class WinningDialog extends Component {
         <div className="Message">
           Congratulations, your score is {this.props.score}!!!
         </div>
-
-        {
-        /*(this.props.limit === -1 || this.props.limit > this.props.score) && */
-        (
+        {(this.props.limit === -1 || this.props.limit < this.props.score) && (
           <div>
             <input type="text" id="name" onChange={this.onNameChange}></input>
             <button className="buttons" id="save" onClick={this.onSaveScore}>
@@ -55,7 +52,7 @@ class WinningDialog extends Component {
   }
 
   onSaveScore = (e) => {
-     firebase.firestore().collection("names").add({
+    firebase.firestore().collection("names").add({
       name: this.state.name,
       highscore: this.props.score,
     });
