@@ -40,16 +40,19 @@ class Game extends Component {
         <div className="board">
           <Body snake_body_element={this.state.snakeBody} />
           <Food position={this.state.food} />
-          <WinningDialog
-            category={this.state.category}
-            isOpen={this.state.isWinningDialog}
-            onClose={(e) => this.setState({ isWinningDialog: false })}
-            onNewGame={this.reset}
-            score={this.state.snakeBody.length}
-            limit={this.limit}
-          ></WinningDialog>
+          <div className="winningDialog">
+            <WinningDialog
+              category={this.state.category}
+              isOpen={this.state.isWinningDialog}
+              onClose={(e) => this.setState({ isWinningDialog: false })}
+              onNewGame={this.reset}
+              score={this.state.snakeBody.length}
+              limit={this.limit}
+            ></WinningDialog>
+          </div>
         </div>
         <div className="highscore">
+          <h1 id="title">Snake</h1>
           <Highscore lastValue={this.getLastValue} />
         </div>
       </div>
