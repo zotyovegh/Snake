@@ -167,16 +167,16 @@ class Game extends Component {
   onKeyPressed = (e) => {
     e = e || window.event;
     switch (e.keyCode) {
-      case 39:
+      case (39, 68):
         this.setState({ direction: "RIGHT" });
         break;
-      case 37:
+      case (37, 65):
         this.setState({ direction: "LEFT" });
         break;
-      case 40:
+      case (40, 83):
         this.setState({ direction: "DOWN" });
         break;
-      case 38:
+      case (38, 87):
         this.setState({ direction: "UP" });
         break;
     }
