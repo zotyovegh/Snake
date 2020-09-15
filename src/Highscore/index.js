@@ -37,7 +37,7 @@ const Highscore = (props) => {
 
   return (
     <div className="main">
-      <div className="title">Names</div>
+      <div className="title">Highscores</div>
       <ol>
         {names.map((data) => (
           <li className="item" key={data.id}>

@@ -1,23 +1,21 @@
 .main {
-  display: flex;
-  margin-top: 10px;
-  margin-left: -15px;  
-}
-
-.category {
-  font-size: 14px;
-  align-self: flex-start;
-  text-align: left;
+  display: block;
+  border: 3px solid red;
+  width: 200px;
 }
 
 .score {
   width: 20px;
   float: left;
+  
 }
 
 .name {
   width: 100px;
   float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .item {
@@ -29,7 +27,3 @@
   font-weight: bold;
   margin-bottom: 15px;
 }
-
-
-
-

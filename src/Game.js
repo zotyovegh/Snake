@@ -36,17 +36,19 @@ class Game extends Component {
 
   render() {
     return (
-      <div className="board">
-        <Body snake_body_element={this.state.snakeBody} />
-        <Food position={this.state.food} />
-        <WinningDialog
-          category={this.state.category}
-          isOpen={this.state.isWinningDialog}
-          onClose={(e) => this.setState({ isWinningDialog: false })}
-          onNewGame={this.reset}
-          score={this.state.snakeBody.length}
-          limit={this.limit}
-        ></WinningDialog>
+      <div className="game">
+        <div className="board">
+          <Body snake_body_element={this.state.snakeBody} />
+          <Food position={this.state.food} />
+          <WinningDialog
+            category={this.state.category}
+            isOpen={this.state.isWinningDialog}
+            onClose={(e) => this.setState({ isWinningDialog: false })}
+            onNewGame={this.reset}
+            score={this.state.snakeBody.length}
+            limit={this.limit}
+          ></WinningDialog>
+        </div>
         <div className="highscore">
           <Highscore lastValue={this.getLastValue} />
         </div>
