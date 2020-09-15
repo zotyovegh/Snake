@@ -3,7 +3,7 @@
   height: fit-content;
   transform: translate(-50%, -50%);
   z-index: 999;
-  background-color: rgba(180, 203, 255, 0.59);
+  background-color: rgb(167, 194, 255);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
