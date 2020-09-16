@@ -54,7 +54,7 @@ class Game extends Component {
       status = "good";
       for (var i = 0; i < bodyElements.length; i++) {
         let element = bodyElements[i];
-        if (coordinates[0] == element[0] && coordinates[1] == element[1]) {
+        if (coordinates[0] === element[0] && coordinates[1] === element[1]) {
           status = "bad";
         }
       }
@@ -83,7 +83,7 @@ class Game extends Component {
     let head = bodyElements[bodyElements.length - 1];
     bodyElements.pop();
     bodyElements.forEach((bodyElement) => {
-      if (head[0] == bodyElement[0] && head[1] == bodyElement[1]) {
+      if (head[0] === bodyElement[0] && head[1] === bodyElement[1]) {
         this.gameOver();
       }
     });
@@ -99,7 +99,7 @@ class Game extends Component {
   checkIfFoodHit() {
     let head = this.state.snakeBody[this.state.snakeBody.length - 1];
     let food = this.state.food;
-    if (food[0] == head[0] && food[1] == head[1]) {
+    if (food[0] === head[0] && food[1] === head[1]) {
       let newBody = [...this.state.snakeBody];
       newBody.unshift([]);
       this.setState({ snakeBody: newBody, food: this.getNewFoodCoordinates() });
