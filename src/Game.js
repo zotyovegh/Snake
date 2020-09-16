@@ -34,31 +34,6 @@ class Game extends Component {
     });
   };
 
-  render() {
-    return (
-      <div className="game">
-        <div className="board">
-          <Body snake_body_element={this.state.snakeBody} />
-          <Food position={this.state.food} />
-          <div className="winningDialog">
-            <WinningDialog
-              category={this.state.category}
-              isOpen={this.state.isWinningDialog}
-              onClose={(e) => this.setState({ isWinningDialog: false })}
-              onNewGame={this.reset}
-              score={this.state.snakeBody.length}
-              limit={this.limit}
-            ></WinningDialog>
-          </div>
-        </div>
-        <div className="highscore">
-          <h1 id="title">Snake</h1>
-          <Highscore lastValue={this.getLastValue} />
-        </div>
-      </div>
-    );
-  }
-
   getLastValue = (score) => {
     this.limit = score;
   };
@@ -116,7 +91,6 @@ class Game extends Component {
 
   gameOver() {
     this.setState({ speed: 0, snakeBody: this.previousBody });
-    console.log("Done " + this.state.snakeBody.length);
     this.setState({
       isWinningDialog: true,
     });
@@ -185,6 +159,31 @@ class Game extends Component {
         break;
     }
   };
+
+  render() {
+    return (
+      <div className="game">
+        <div className="board">
+          <Body snake_body_element={this.state.snakeBody} />
+          <Food position={this.state.food} />
+          <div className="winningDialog">
+            <WinningDialog
+              category={this.state.category}
+              isOpen={this.state.isWinningDialog}
+              onClose={(e) => this.setState({ isWinningDialog: false })}
+              onNewGame={this.reset}
+              score={this.state.snakeBody.length}
+              limit={this.limit}
+            ></WinningDialog>
+          </div>
+        </div>
+        <div className="highscore">
+          <h1 id="title">Snake</h1>
+          <Highscore lastValue={this.getLastValue} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Game;

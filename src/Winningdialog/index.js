@@ -8,7 +8,6 @@ class WinningDialog extends Component {
     this.state = {
       name: "",
     };
-
     this.onNameChange = this.onNameChange.bind(this);
   }
 
@@ -17,6 +16,15 @@ class WinningDialog extends Component {
       name: e.target.value,
     });
   }
+
+  onSaveScore = (e) => {
+    firebase.firestore().collection("names").add({
+      name: this.state.name,
+      highscore: this.props.score,
+    });
+    this.props.onClose();
+    this.props.onNewGame();
+  };
 
   render() {
     let winningDialog = (
@@ -50,14 +58,5 @@ class WinningDialog extends Component {
     }
     return <div>{winningDialog}</div>;
   }
-
-  onSaveScore = (e) => {
-    firebase.firestore().collection("names").add({
-      name: this.state.name,
-      highscore: this.props.score,
-    });
-    this.props.onClose();
-    this.props.onNewGame();
-  };
 }
 export default WinningDialog;
