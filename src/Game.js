@@ -143,18 +143,22 @@ class Game extends Component {
     switch (e.keyCode) {
       case 39:
       case 68:
+      case 99:
         this.setState({ direction: "RIGHT" });
         break;
       case 37:
       case 65:
+      case 97:
         this.setState({ direction: "LEFT" });
         break;
       case 40:
       case 83:
+      case 98:
         this.setState({ direction: "DOWN" });
         break;
       case 38:
       case 87:
+      case 101:
         this.setState({ direction: "UP" });
         break;
     }
