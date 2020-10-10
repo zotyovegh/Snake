@@ -6,8 +6,8 @@
 .score {
   width: 20px;
   height: fit-content;
-  float: left; 
   padding-right: 15px; 
+  padding-right: 15px;
 }
 
 .name {
@@ -27,4 +27,12 @@
   text-align: center;
   font-weight: bold;
   margin-bottom: 15px;
+}
+
+.logo {
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  margin-top: 65px;
+  padding-top: 2px;
 }

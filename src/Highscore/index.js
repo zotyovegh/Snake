@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import firebase from "../firebase";
+import logo from "./GithubLogo.png";
 
 function useTimes() {
   const [cat, setTimes] = useState([]);
@@ -36,18 +37,26 @@ const Highscore = (props) => {
   props.lastValue(namesLast);
 
   return (
-    <div className="main">
-      <div className="title">Highscores</div>
-      <ol>
-        {names.map((data) => (
-          <li className="item" key={data.id}>
-            <div>
-              <div className="name">{data.name}</div>
-              <div className="score">{data.highscore}</div>
-            </div>
-          </li>
-        ))}
-      </ol>
+    <div>
+      <div className="main">
+        <div className="title">Highscores</div>
+        <ol>
+          {names.map((data) => (
+            <li className="item" key={data.id}>
+              <div>
+                <div className="name">{data.name}</div>
+                <div className="score">{data.highscore}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div className="logo">
+        <a href="https://github.com/zotyovegh/Snake">
+          {" "}
+          <img width="150" height="35" src={logo} />
+        </a>
+      </div>
     </div>
   );
 };
