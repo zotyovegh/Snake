@@ -6,7 +6,7 @@
 .score {
   width: 20px;
   height: fit-content;
-  padding-right: 15px; 
+  float: left;
   padding-right: 15px;
 }
 
