@@ -65,10 +65,16 @@ class Game extends Component {
 
     return coordinates;
   }
+  title = "Snake";
+
+  componentWillReceiveProps(nextProps) {
+    document.title = "Snake";
+  }
 
   componentDidMount() {
     setInterval(this.movement, this.state.speed);
     document.onkeydown = this.onKeyPressed;
+    document.title = "Snake";
   }
 
   checkBorderHit() {
